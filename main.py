@@ -14,7 +14,7 @@ client = OpenAI()  # uses env var
 class ImageRequest(BaseModel):
     prompt: str
     model: str | None = "gpt-image-1"   # DALL·E-style model
-    size: str | None = "512x512"       # smaller = lighter
+    size: str | None = "1024x1024"       # smaller = lighter
     n: int | None = 1                  # one image at a time
 
 
@@ -25,6 +25,8 @@ class ImageResponse(BaseModel):
 @app.post("/generate-image", response_model=ImageResponse)
 async def generate_image(body: ImageRequest):
     try:
+
+        size = "1024x1024"
         result = client.images.generate(
             model=body.model,
             prompt=body.prompt,
