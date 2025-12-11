@@ -40,3 +40,4 @@ async def generate_image(body: ImageRequest):
     except Exception as e:
         print(f"Error in dalle-service: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+    
